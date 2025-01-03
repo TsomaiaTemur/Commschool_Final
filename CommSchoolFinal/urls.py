@@ -1,5 +1,5 @@
 """
-URL configuration for csFinal project.
+URL configuration for CommSchoolFinal project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('santa_list', include('Santa_list.urls')),
-    path('Toy_factory', include('Toy_factory.urls')),
-    path('Statistics', include('Statistics.urls')),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('santas_list/', include('santas_list.urls')),
+    path('toy_factory/', include('toy_factory.urls')),
+    path('statistics/', include('Statistics.urls')),
 ]
